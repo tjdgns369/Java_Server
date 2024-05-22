@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="JoinService" method="post">
+		
+		<input type="text" placeholder="아이디를 입력해주세요" id="inputId" name="id">
+		<!-- form태그 안의 button의 기본 type은 submit이다.-->
+		<button type="button" onclick="checkId()">아이디 중복확인</button>
+		<br>
+		
+		<input type="password" placeholder="비밀번호를 입력해주세요" name="pw"><br>
+		<input type="text" placeholder="닉네임을 입력해주세요" name="nick"><br>
+		<input type="submit" value="JOIN">
+	</form>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script>
+		//버튼 클릭 시 Ajax 사용
+		function checkId(){
+			
+			let id = document.getElementById("inputId").value
+			$.ajax({
+				url : "IdCheck",
+				data : {"inputId":id},
+				dataType : "json",
+				success: function(res){
+					console.log(res)
+					//res : 서블릿에서 반환 받은 데이터
+					if(res==1){
+						alert("중복된 아이디입니다")
+					}
+					else{
+						alert("사용가능 아이디입니다")
+					}
+				},
+				error: function(){
+					
+				}				
+			})
+		}
+	</script>
+</body>
+</html>

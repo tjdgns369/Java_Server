@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MemberDAO">
+<!-- mapper : SQL문 모아두는 곳 -->
+  <select id="select" parameterType="Member_DTO" resultType="Member_DTO">
+    select * from MavenMember where id = #{id} and pw = #{pw}    
+  </select>
+  
+  <insert id="JoinInsert" parameterType="Member_DTO">
+    insert into MavenMember values (#{id},#{pw},#{nick})      
+  </insert>
+  
+</mapper>
